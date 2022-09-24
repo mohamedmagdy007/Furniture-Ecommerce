@@ -12,7 +12,7 @@
   --heading-fontSize: 2rem;
   --small-text-color: #999;
   --heading-text-color: #0a1d37;
-  --font-bold:700;
+  --font-bold: 700;
 }
 
 /* reset browser default */
@@ -59,11 +59,15 @@ img {
   width: 100%;
 }
 
-section{
+section {
   padding: 60px 0px;
 }
 .section__title {
   color: var(--primary-color);
   font-weight: var(--font-bold);
-  
+}
+@media screen and (max-width: 667px) {
+  section {
+    padding: 30px 0px;
+  }
 }

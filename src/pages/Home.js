@@ -5,12 +5,15 @@ import { Container, Row, Col } from "reactstrap";
 import heroImg from "../assets/images/hero-img.png";
 import { Link } from "react-router-dom";
 import Service from "../services/Service";
-import ProductList from "../components/ui/ProductList";
 import AllProduct from "../assets/data/products";
 import TimerCount from "../components/ui/TimerCounter/TimerCount";
+import SectionsCategories from "../components/ui/SectionsCategories";
 const Home = () => {
   const [trendingProducts, setTrendingProducts] = useState([]);
   const [bestSalesProducts, setBestSalesProducts] = useState([]);
+  const [mobileProducts, setMobileProducts] = useState([]);
+  const [wirelessProducts, setWirelessProducts] = useState([]);
+  const [popularProducts, setPopularProducts] = useState([]);
   useEffect(() => {
     const filteredTrendProducts = AllProduct.filter(
       (item) => item.category === "chair"
@@ -18,8 +21,20 @@ const Home = () => {
     const filteredBestProducts = AllProduct.filter(
       (item) => item.category === "sofa"
     );
+    const filteredMobileProducts = AllProduct.filter(
+      (item) => item.category === "mobile"
+    );
+    const filteredWirelessProducts = AllProduct.filter(
+      (item) => item.category === "wireless"
+    );
+    const filteredPopularProducts = AllProduct.filter(
+      (item) => item.category === "watch"
+    );
     setTrendingProducts(filteredTrendProducts);
     setBestSalesProducts(filteredBestProducts);
+    setMobileProducts(filteredMobileProducts);
+    setWirelessProducts(filteredWirelessProducts);
+    setPopularProducts(filteredPopularProducts);
   }, []);
   const year = new Date().getFullYear();
   return (
@@ -51,29 +66,17 @@ const Home = () => {
         </Container>
       </section>
       <Service />
-      <section className={styles.trending__products}>
-        <Container>
-          <Row>
-            <Col lg="12" className="text-center">
-              <h2 className="section__title">Trending Products</h2>
-            </Col>
-            <ProductList data={trendingProducts} />
-          </Row>
-        </Container>
-      </section>
-      <section className={styles.best__sales}>
-        <Container>
-          <Row>
-            <Col lg="12" className="text-center">
-              <h2 className="section__title">Best Sales</h2>
-            </Col>
-            <ProductList data={bestSalesProducts} />
-          </Row>
-        </Container>
-      </section>
+      <SectionsCategories data={trendingProducts} title="Trending Products" />
+      <SectionsCategories data={bestSalesProducts} title="Best Sales" />
       <section className={styles.timer__count}>
         <TimerCount />
       </section>
+      <SectionsCategories
+        data={mobileProducts}
+        secondData={wirelessProducts}
+        title="New Arrivals"
+      />
+      <SectionsCategories data={popularProducts} title="Popular in Category" />
     </Helmet>
   );
 };

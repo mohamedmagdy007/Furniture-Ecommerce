@@ -6,16 +6,16 @@ import { Link } from "react-router-dom";
 const ProductCart = ({ item }) => {
   const { id, productName, imgUrl, category, price } = item;
   return (
-    <Col lg="3" md="4">
+    <Col lg="3" md="4" sm="6">
       <div className={styles.product__item}>
         <div className={styles.product__img}>
-          <Link to={`/shop/${id}`}>
+          <Link to={`/productDetails/${id}`}>
             <img src={imgUrl} alt={productName} />
           </Link>
         </div>
         <div className={`p-2 ${styles.product__info}`}>
           <h3 className={styles.product__name}>
-            <Link to={`/shop/${id}`}>{productName}</Link>
+            <Link to={`/productDetails/${id}`}>{productName}</Link>
           </h3>
           <span>{category}</span>
         </div>

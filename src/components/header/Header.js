@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useRef } from "react";
 import styles from "./header.module.css";
 import { NavLink } from "react-router-dom";
 import { Container, Row } from "reactstrap";
 import logo from "../../assets/images/eco-logo.png";
 import person from "../../assets/images/user-icon.png";
+
 const Nav__link = [
   { path: "/home", display: "Home" },
   { path: "/shop", display: "Shop" },
@@ -11,6 +12,8 @@ const Nav__link = [
 ];
 
 const Header = () => {
+  const menuRef = useRef(null);
+  const toggleMenu = () => menuRef.current.classList.toggle(styles.show__menu);
   return (
     <header className={styles.header}>
       <Container>
@@ -22,7 +25,11 @@ const Header = () => {
                 <h1>Multimart</h1>
               </div>
             </div>
-            <div className={styles.navigation}>
+            <div
+              className={styles.navigation}
+              ref={menuRef}
+              onClick={toggleMenu}
+            >
               <ul className={styles.menu}>
                 {Nav__link.map((item, index) => (
                   <li className={styles.nav__item} key={index}>
@@ -50,11 +57,11 @@ const Header = () => {
               <span>
                 <img src={person} alt="user" />
               </span>
-            </div>
-            <div className={styles.mobile__menu}>
-              <span>
-                <i className="ri-menu-line"></i>
-              </span>
+              <div className={styles.mobile__menu} onClick={toggleMenu}>
+                <span>
+                  <i className="ri-menu-line"></i>
+                </span>
+              </div>
             </div>
           </div>
         </Row>

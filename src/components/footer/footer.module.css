@@ -1,0 +1,17 @@
+.footer {
+  background: var(--primary-color);
+  padding: 60px 0px;
+}
+.footer h2 {
+  color: #fff;
+  margin-bottom: 2rem;
+}
+.footer p {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  line-height: 28px;
+}
+.footer span i {
+    color: #fff;
+    font-weight: 500 !important;
+} 

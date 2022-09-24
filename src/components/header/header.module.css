@@ -1,5 +1,12 @@
 .header {
   width: 100%;
+  position: sticky;
+  top: 0;
+  left: 0;
+  background: #fff;
+  z-index: 999999999999999999;
+  box-shadow: rgb(0 0 0 / 10%) 0px 4px 6px -1px,
+    rgb(0 0 0 / 6%) 0px 2px 4px -1px;
 }
 .nav__wrapper {
   display: flex;
@@ -72,4 +79,35 @@
 }
 .nav__active {
   font-weight: var(--font-bold) !important;
+}
+@media screen and (max-width: 768px) {
+  .navigation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.53);
+    z-index: 9999;
+    display: none;
+  }
+  .menu {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 250px;
+    height: 100%;
+    padding: 0;
+    background: #fff;
+    z-index: 99999;
+    flex-direction: column;
+    justify-content: center;
+    row-gap: 3rem;
+  }
+  .show__menu {
+    display: block;
+  }
+  .mobile__menu {
+    display: block;
+  }
 }

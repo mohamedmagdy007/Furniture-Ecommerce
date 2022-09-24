@@ -30,31 +30,29 @@ const Clock = () => {
     countDown();
   }, []);
   return (
-    <div
-      className={`${styles.clock__wrapper} d-flex align-items-center gap-5 my-5`}
-    >
-      <div className={`${styles.clock__data} d-flex align-items-center gap-4 `}>
+    <div className={`d-flex align-items-center gap-2 gap-sm-5 gap-lg-5 my-5`}>
+      <div className={`d-flex align-items-center gap-2 gap-sm-3 gap-lg-4 `}>
         <div className="text-center">
           <h1 className="text-white fs-3">{days}</h1>
           <h5 className="text-white fs-5">Days</h5>
         </div>
         <span className="text-white fs-3">:</span>
       </div>
-      <div className={`${styles.clock__data} d-flex align-items-center gap-4`}>
+      <div className={`d-flex align-items-center gap-2 gap-sm-3 gap-lg-4`}>
         <div className="text-center">
           <h1 className="text-white fs-3">{hours}</h1>
           <h5 className="text-white fs-5">Hours</h5>
         </div>
         <span className="text-white fs-3">:</span>
       </div>
-      <div className={`${styles.clock__data} d-flex align-items-center gap-4`}>
+      <div className={`d-flex align-items-center gap-2 gap-sm-3 gap-lg-4`}>
         <div className="text-center">
           <h1 className="text-white fs-3">{minutes}</h1>
           <h5 className="text-white fs-5">Minutes</h5>
         </div>
         <span className="text-white fs-3">:</span>
       </div>
-      <div className={`${styles.clock__data} d-flex align-items-center gap-4`}>
+      <div className={`d-flex align-items-center gap-2 gap-sm-3 gap-lg-4`}>
         <div className="text-center">
           <h1 className="text-white fs-3">{seconds}</h1>
           <h5 className="text-white fs-5">seconds</h5>

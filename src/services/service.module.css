@@ -6,6 +6,7 @@
   border-radius: 5px;
   cursor: pointer;
   transition: 0.5s;
+  height: 100%;
 }
 .services__item:hover {
   transform: translateY(-10px);
