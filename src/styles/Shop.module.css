@@ -1,0 +1,84 @@
+.grid__layout {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  margin-block: 2rem;
+}
+
+.line {
+  width: 54%;
+  height: 0px;
+  border: 1px solid #ccc;
+  background: #ccc;
+}
+.layout__btns {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.layout__btns button {
+  border: none;
+  outline: none;
+  background: transparent;
+}
+.layout__btns button.active i {
+  background: #000;
+  color: #fff;
+}
+.layout__btns button i {
+  font-size: 1.7rem;
+  border: 2px solid #000;
+  border-radius: 5px;
+  color: #000;
+}
+.sort {
+  border: none;
+  outline: none;
+}
+.sideBar {
+  margin-top: 0.3rem;
+}
+.sideBar .content {
+  position: sticky;
+  top: 6rem;
+}
+.content input[type="text"] {
+  background: #f1f5f8;
+  border: none;
+  outline: none;
+  padding: 0.5rem 0.7em;
+  border-radius: 6px;
+}
+.content .h2 {
+  border: none;
+  background: transparent;
+  outline: none;
+  margin-block: 1rem;
+  font-weight: 600;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.content p {
+  margin-bottom: 0.8rem;
+  cursor: pointer;
+}
+.filter__btn {
+  margin-top: 1rem;
+  border: none;
+  outline: none;
+  background: #bb2525;
+  color: #fff;
+  padding: 0.25rem 1rem;
+  border-radius: 0.25rem;
+}
+@media screen and (max-width: 990px) {
+  .grid__layout {
+    display: grid;
+    grid-template-columns: 1fr !important;
+  }
+  .layout__nav {
+    flex-direction: column !important;
+  }
+}
+

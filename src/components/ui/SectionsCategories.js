@@ -9,8 +9,8 @@ const SectionsCategories = ({ title, data, secondData }) => {
           <Col lg="12" className="text-center">
             <h2 className="section__title">{title}</h2>
           </Col>
-          <ProductList data={data} />
-          {secondData && <ProductList data={secondData} />}
+          <ProductList data={data} layout={false} />
+          {secondData && <ProductList data={secondData} layout={false} />}
         </Row>
       </Container>
     </section>

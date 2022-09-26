@@ -3,9 +3,12 @@
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
-  cursor: pointer;
 }
-
+.layout__row img{
+  width: 450px;
+  height: 250px;
+  object-fit: contain;
+}
 .product__info .product__name {
   font-size: 1.1rem;
   color: var(--primary-color);
@@ -17,7 +20,6 @@
 .product__info span {
   font-size: 0.9rem;
 }
-
 .Product__Cart-bottom .price {
   font-weight: 500;
   font-size: 1.3rem;
