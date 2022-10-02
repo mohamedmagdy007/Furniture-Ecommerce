@@ -8,25 +8,67 @@ import AllProduct from "../assets/data/products";
 import ReactPaginate from "react-paginate";
 const Shop = () => {
   const [allProdcts, setAllProdcts] = useState(AllProduct);
+  const [category, setCategory] = useState("all");
   const [layout, setLayout] = useState(false);
   const [open, setOpen] = useState(false);
-  const toggleFunc = useCallback(() => setOpen(!open));
-  const [FallProducts, setFAllProducts] = useState(allProdcts);
+  const toggleFunc = useCallback(() => setOpen(!open), [open]);
+  const [filter, setFilter] = useState(allProdcts);
+  const [fallProducts, setFAllProducts] = useState(allProdcts);
   const [pageNumber, setPageNumber] = useState(0);
   const productPerPage = 8;
   const visitedPage = pageNumber * productPerPage;
+  console.log(visitedPage);
 
   useEffect(() => {
-    const displayPage = AllProduct.slice(
-      visitedPage,
-      visitedPage + productPerPage
-    );
-    setFAllProducts(displayPage);
-  }, [visitedPage]);
+    if (category === "all") {
+      setFilter(allProdcts);
+    }
+    if (category === "sofa") {
+      const fiteredProducts = allProdcts.filter(
+        (item) => item.category === "sofa"
+      );
+      setFilter(fiteredProducts);
+    }
+    if (category === "chair") {
+      const fiteredProducts = allProdcts.filter(
+        (item) => item.category === "chair"
+      );
+      setFilter(fiteredProducts);
+    }
+    if (category === "mobile") {
+      const fiteredProducts = allProdcts.filter(
+        (item) => item.category === "mobile"
+      );
+      setFilter(fiteredProducts);
+    }
+    if (category === "watch") {
+      const fiteredProducts = allProdcts.filter(
+        (item) => item.category === "watch"
+      );
+      setFilter(fiteredProducts);
+    }
+    if (category === "wireless") {
+      const fiteredProducts = allProdcts.filter(
+        (item) => item.category === "wireless"
+      );
+      setFilter(fiteredProducts);
+    }
+  }, [category, allProdcts]);
 
-  const pageCount = Math.ceil(AllProduct.length / productPerPage);
+  useEffect(() => {
+    const displayPage = filter.slice(visitedPage, visitedPage + productPerPage);
+    setFAllProducts(displayPage);
+  }, [visitedPage, filter]);
+
+  const pageCount = Math.ceil(filter.length / productPerPage);
   const changePage = ({ selected }) => {
+    console.log("selected==>", selected);
     setPageNumber(selected);
+  };
+
+  const filterHandle = (e) => {
+    setCategory(e.target.dataset.filter);
+    setPageNumber(0);
   };
   return (
     <Helmet title={"Shop"}>
@@ -42,12 +84,60 @@ const Shop = () => {
                   <i className="ri-arrow-down-s-fill"></i>
                 </button>
                 <div className={open === true ? "d-bock" : "d-none"}>
-                  <p>All</p>
-                  <p>Sofa</p>
-                  <p>Chair</p>
-                  <p>Mobile</p>
-                  <p>Watch</p>
-                  <p>Wireless</p>
+                  <p
+                    className={`${
+                      category === "all" ? styles.btn__active : null
+                    }`}
+                    data-filter="all"
+                    onClick={filterHandle}
+                  >
+                    All
+                  </p>
+                  <p
+                    className={`${
+                      category === "sofa" ? styles.btn__active : null
+                    }`}
+                    data-filter="sofa"
+                    onClick={filterHandle}
+                  >
+                    Sofa
+                  </p>
+                  <p
+                    className={`${
+                      category === "chair" ? styles.btn__active : null
+                    }`}
+                    data-filter="chair"
+                    onClick={filterHandle}
+                  >
+                    Chair
+                  </p>
+                  <p
+                    className={`${
+                      category === "mobile" ? styles.btn__active : null
+                    }`}
+                    data-filter="mobile"
+                    onClick={filterHandle}
+                  >
+                    Mobile
+                  </p>
+                  <p
+                    className={`${
+                      category === "watch" ? styles.btn__active : null
+                    }`}
+                    data-filter="watch"
+                    onClick={filterHandle}
+                  >
+                    Watch
+                  </p>
+                  <p
+                    className={`${
+                      category === "wireless" ? styles.btn__active : null
+                    }`}
+                    data-filter="wireless"
+                    onClick={filterHandle}
+                  >
+                    Wireless
+                  </p>
                 </div>
               </div>
               <div>
@@ -76,7 +166,7 @@ const Shop = () => {
                   <i className="ri-align-justify"></i>
                 </button>
               </div>
-              <p>{FallProducts.length} Products Found</p>
+              <p>{fallProducts.length} Products Found</p>
               <div className={styles.line}></div>
               <div className="d-flex flex-wrap">
                 <span className="me-1">Sort By</span>
@@ -88,8 +178,8 @@ const Shop = () => {
                 </select>
               </div>
             </div>
-            <Row className="justify-content-center">
-              <ProductList data={FallProducts} layout={layout} />
+            <Row>
+              <ProductList data={fallProducts} layout={layout} />
             </Row>
             <ReactPaginate
               pageCount={pageCount}

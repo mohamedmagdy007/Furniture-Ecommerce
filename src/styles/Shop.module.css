@@ -72,6 +72,12 @@
   padding: 0.25rem 1rem;
   border-radius: 0.25rem;
 }
+.btn__active {
+  font-weight: var(--font-bold);
+  color: #001010;
+  border-bottom: 2px solid #001010;
+  width: fit-content;
+}
 @media screen and (max-width: 990px) {
   .grid__layout {
     display: grid;
@@ -81,4 +87,3 @@
     flex-direction: column !important;
   }
 }
-
