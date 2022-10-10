@@ -96,6 +96,9 @@ section {
 .paginationBttns .next.disabled {
   display: none;
 }
+.Toastify__toast-container--top-right {
+  top: 5.2em !important;
+}
 @media screen and (max-width: 667px) {
   section {
     padding: 30px 0px;

@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import { Container, Row } from "reactstrap";
 import logo from "../../assets/images/eco-logo.png";
 import person from "../../assets/images/user-icon.png";
-
+import { useSelector } from "react-redux";
 const Nav__link = [
   { path: "/home", display: "Home" },
   { path: "/shop", display: "Shop" },
@@ -14,6 +14,8 @@ const Nav__link = [
 const Header = () => {
   const menuRef = useRef(null);
   const toggleMenu = () => menuRef.current.classList.toggle(styles.show__menu);
+  const totalQuantity = useSelector((state) => state.cart.totalQuantity);
+
   return (
     <header className={styles.header}>
       <Container>
@@ -52,7 +54,7 @@ const Header = () => {
               </span>
               <span className={styles.cart__icon}>
                 <i className="ri-shopping-bag-line"></i>
-                <span className={styles.badge}>1</span>
+                <span className={styles.badge}>{totalQuantity}</span>
               </span>
               <span>
                 <img src={person} alt="user" />
