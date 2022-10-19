@@ -27,3 +27,60 @@
   font-size: 1.3rem;
   font-weight: 500;
 }
+.tab__wrapper {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  cursor: pointer;
+  color: var(--primary-color);
+  font-weight: 500;
+}
+.product__review ul span {
+  color: rgb(243, 57, 57);
+}
+.active__tab {
+  font-weight: 600;
+}
+.review__form {
+  width: 65%;
+}
+.review__form h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+.form__group {
+  margin-bottom: 30px;
+}
+.form__group :is(input, textarea) {
+  width: 100%;
+  border: 1px solid var(--primary-color);
+  border-radius: 5px;
+  padding: 8px 20px;
+  outline: none;
+}
+.form__group span {
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+  color: coral;
+  font-weight: 600;
+}
+.buy__btn {
+  border: none;
+  outline: none;
+  padding: 8px 20px;
+  margin-top: 1rem;
+  border-radius: 5px;
+  color: #fff;
+  background: var(--primary-color);
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s;
+}
+.buy__btn a:hover {
+  color: inherit;
+}
+.buy__btn:hover {
+  transform: scale(1.1);
+}

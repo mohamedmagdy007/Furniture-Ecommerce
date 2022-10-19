@@ -12,7 +12,7 @@ const Shop = () => {
   const [layout, setLayout] = useState(false);
   const [open, setOpen] = useState(true);
   const toggleFunc = useCallback(() => setOpen(!open), [open]);
-  const [filter, setFilter] = useState(allProdcts);
+  const [filterpro, setFilter] = useState(allProdcts);
   const [sort, setSort] = useState("");
   const [fallProducts, setFAllProducts] = useState(allProdcts);
   const [pageNumber, setPageNumber] = useState(0);
@@ -58,21 +58,21 @@ const Shop = () => {
   }, [category, allProdcts]);
 
   let pageCount = Math.ceil(
-    filter.length && rangeProduct.length / productPerPage
+    filterpro.length && rangeProduct.length / productPerPage
   );
   const changePage = ({ selected }) => {
     setPageNumber(selected);
   };
 
   const filterHandle = (e) => {
-    setCategory(e.target.dataset.filter);
+    setCategory(e.target.dataset.filterpro);
     setPageNumber(0);
   };
 
   useEffect(() => {
     if (sort === "defualt") {
       setFAllProducts(
-        (filter && rangeProduct).sort((a, b) => {
+        (filterpro && rangeProduct).sort((a, b) => {
           const nameA = a.id;
           const nameB = b.id;
           if (nameA < nameB) {
@@ -87,7 +87,7 @@ const Shop = () => {
     }
     if (sort === "name-a") {
       setFAllProducts(
-        (filter && rangeProduct).sort((a, b) => {
+        (filterpro && rangeProduct).sort((a, b) => {
           const nameA = a.productName.toUpperCase();
           const nameB = b.productName.toUpperCase();
           if (nameA < nameB) {
@@ -102,7 +102,7 @@ const Shop = () => {
     }
     if (sort === "name-z") {
       setFAllProducts(
-        (filter && rangeProduct).sort((a, b) => {
+        (filterpro && rangeProduct).sort((a, b) => {
           const nameA = a.productName.toUpperCase();
           const nameB = b.productName.toUpperCase();
           if (nameA > nameB) {
@@ -117,36 +117,36 @@ const Shop = () => {
     }
     if (sort === "price-highest") {
       setFAllProducts(
-        (filter && rangeProduct).sort((a, b) => b.price - a.price)
+        (filterpro && rangeProduct).sort((a, b) => b.price - a.price)
       );
     }
     if (sort === "price-lowest") {
       setFAllProducts(
-        (filter && rangeProduct).sort((a, b) => a.price - b.price)
+        (filterpro && rangeProduct).sort((a, b) => a.price - b.price)
       );
     }
-  }, [filter, sort, rangeProduct]);
+  }, [filterpro, sort, rangeProduct]);
 
   useEffect(() => {
-    const fiteredProducts = filter.filter((item) => item.price <= range);
+    const fiteredProducts = filterpro.filter((item) => item.price <= range);
     setRangeProduct(fiteredProducts);
-  }, [range, filter]);
+  }, [range, filterpro]);
 
   useEffect(() => {
-    const fiteredProducts = filter.filter((item) => {
+    const fiteredProducts = filterpro.filter((item) => {
       if (searchTerm === "") return item;
       if (item.productName.toLowerCase().includes(searchTerm.toLowerCase()))
         return item;
     });
     setRangeProduct(fiteredProducts);
-  }, [searchTerm, filter]);
+  }, [searchTerm, filterpro]);
 
   useEffect(() => {
     const displayPage =
-      filter.slice(visitedPage, visitedPage + productPerPage) &&
+    filterpro.slice(visitedPage, visitedPage + productPerPage) &&
       rangeProduct.slice(visitedPage, visitedPage + productPerPage);
     setFAllProducts(displayPage);
-  }, [visitedPage, filter, sort, rangeProduct]);
+  }, [visitedPage, filterpro, sort, rangeProduct]);
   const clearFilterHandler = () => {
     setCategory("all");
     setFilter(allProdcts);
