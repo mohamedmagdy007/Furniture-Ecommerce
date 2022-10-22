@@ -15,7 +15,7 @@ const ProductCart = ({ item, layout }) => {
         id: id,
         productName: productName,
         price: price,
-        image: imgUrl,
+        imgUrl: imgUrl,
       })
     );
     toast.success("Product added success");

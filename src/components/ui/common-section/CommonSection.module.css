@@ -1,8 +1,12 @@
 .common__section {
-    background: linear-gradient(#212245b2, #212245b2),
-      url("../../../assets/images/bg-breadcrumb.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: bottom;
-    padding: 120px 0px;
-  }
+  background: linear-gradient(#212245b2, #212245b2),
+    url("../../../assets/images/bg-breadcrumb.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom;
+  padding: 120px 0px;
+}
+
+.common__section h2 {
+  text-transform: capitalize;
+}

@@ -7,6 +7,8 @@
   z-index: 1000;
   box-shadow: rgb(0 0 0 / 10%) 0px 4px 6px -1px,
     rgb(0 0 0 / 6%) 0px 2px 4px -1px;
+    backdrop-filter: saturate(180%) blur(5px);
+    background: hsla(0,0%,100%,.8);
 }
 .nav__wrapper {
   display: flex;
@@ -64,10 +66,35 @@
   font-weight: var(--font-bold);
   z-index: 10;
 }
-.nav__icons span img {
+.nav__icons .profile img {
   width: 2.2rem;
   cursor: pointer;
   transition: 0.3s;
+}
+.nav__icons .profile {
+  position: relative;
+  z-index: 9;
+}
+
+.nav__icons .profile .profile__actions {
+  position: absolute;
+  top: 100%;
+  left: -2rem;
+  width: 150px;
+  z-index: 10;
+  padding: 15px;
+  border-radius: 5px;
+  align-items: center;
+  flex-direction: column;
+  background: var(--card-bg-01);
+  line-height: 30px;
+  display: none;
+}
+.nav__icons .profile .profile__actions a {
+  color: var(--primary-color);
+}
+.show__profileActions {
+  display: flex !important;
 }
 .nav__icons span img:hover {
   transform: scale(1.1);

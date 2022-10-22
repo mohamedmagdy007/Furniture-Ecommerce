@@ -1,0 +1,33 @@
+.table__responsive {
+  overflow-x: auto;
+}
+.table {
+  width: 800px;
+}
+.table tr td img {
+  width: 80px !important;
+  height: 80px !important;
+  object-fit: cover;
+}
+td i {
+  cursor: pointer;
+}
+td {
+  vertical-align: middle;
+  text-align: center;
+}
+.buy__btn {
+  border: none;
+  outline: none;
+  padding: 8px 20px;
+  margin-top: 1rem;
+  border-radius: 5px;
+  color: #fff;
+  background: var(--primary-color);
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s;
+}
+.buy__btn a:hover {
+  color: inherit;
+}

@@ -1,10 +1,15 @@
 import React, { useRef } from "react";
 import styles from "./header.module.css";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { Container, Row } from "reactstrap";
 import logo from "../../assets/images/eco-logo.png";
 import person from "../../assets/images/user-icon.png";
 import { useSelector } from "react-redux";
+import useAuth from "../../custom-hooks/useAuth";
+import { signOut } from "firebase/auth";
+import { auth } from "../../firebase.config";
+import { toast } from "react-toastify";
+
 const Nav__link = [
   { path: "/home", display: "Home" },
   { path: "/shop", display: "Shop" },
@@ -15,7 +20,23 @@ const Header = () => {
   const menuRef = useRef(null);
   const toggleMenu = () => menuRef.current.classList.toggle(styles.show__menu);
   const totalQuantity = useSelector((state) => state.cart.totalQuantity);
+  const profileActions = useRef(null);
+  const navigate = useNavigate();
+  const { currentUser } = useAuth();
 
+  const togglesprofileActions = () => {
+    profileActions.current.classList.toggle(`${styles.show__profileActions}`);
+  };
+  const logout = () => {
+    signOut(auth)
+      .then(() => {
+        toast.success("Logged out");
+        navigate("/home")
+      })
+      .catch((err) => {
+        toast.error(err.message);
+      });
+  };
   return (
     <header className={styles.header}>
       <Container>
@@ -56,9 +77,27 @@ const Header = () => {
                 <i className="ri-shopping-bag-line"></i>
                 <span className={styles.badge}>{totalQuantity}</span>
               </span>
-              <span>
-                <img src={person} alt="user" />
-              </span>
+              <div className={styles.profile}>
+                <img
+                  src={currentUser ? currentUser.photoURL : person}
+                  alt="user"
+                  onClick={togglesprofileActions}
+                />
+                <div
+                  className={styles.profile__actions}
+                  ref={profileActions}
+                  onClick={togglesprofileActions}
+                >
+                  {currentUser ? (
+                    <span onclick={logout}>logout</span>
+                  ) : (
+                    <div className="d-flex flex-column">
+                      <Link to="/signup">SignUp</Link>
+                      <Link to="/login">LogIn</Link>
+                    </div>
+                  )}
+                </div>
+              </div>
               <div className={styles.mobile__menu} onClick={toggleMenu}>
                 <span>
                   <i className="ri-menu-line"></i>

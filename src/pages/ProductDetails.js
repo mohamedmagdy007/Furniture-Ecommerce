@@ -4,10 +4,12 @@ import styles from "../styles/Details.module.css";
 import AllProduct from "../assets/data/products";
 import { Col, Container, Row } from "reactstrap";
 import { useDispatch } from "react-redux";
-import Helmet from "../components/helmet/Helmet";
 import { toast } from "react-toastify";
+import Helmet from "../components/helmet/Helmet";
 import { CommonSection } from "../components/ui/common-section/CommonSection";
 import { cartActions } from "../redux/slices/cartSlice";
+import ProductList from "../components/ui/ProductList";
+import { useEffect } from "react";
 const ProductDetails = () => {
   const [tab, setTab] = useState("desc");
   const { id } = useParams();
@@ -19,22 +21,28 @@ const ProductDetails = () => {
     price,
     avgRating,
     reviews,
+    category,
     description,
     shortDesc,
   } = product;
+  const relatedProducts = AllProduct.filter(
+    (item) => item.category === category
+  );
   const dispatch = useDispatch();
   const AddToCartHandler = () => {
-    console.log("bjkbjbj");
     dispatch(
       cartActions.addItems({
         id: id,
         productName: productName,
         price: price,
-        image: imgUrl,
+        imgUrl: imgUrl,
       })
     );
     toast.success("Product added success");
   };
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [product]);
   return (
     <Helmet title={"Product-Details"}>
       <CommonSection title={productName} />
@@ -67,7 +75,10 @@ const ProductDetails = () => {
                   </div>
                   <p>({avgRating}ratings)</p>
                 </div>
-                <span className={styles.product__price}>{price}</span>
+                <div className="d-flex align-items-center gap-2">
+                  <span className={styles.product__price}>${price} </span>
+                  <span>category: {category}</span>
+                </div>
                 <p>{shortDesc}</p>
                 <button className={styles.addToCart} onClick={AddToCartHandler}>
                   Add To Cart
@@ -135,7 +146,11 @@ const ProductDetails = () => {
                         </span>
                       </div>
                       <div className={styles.form__group}>
-                        <textarea rows={4} type="text" placeholder="Review Message.." />
+                        <textarea
+                          rows={4}
+                          type="text"
+                          placeholder="Review Message.."
+                        />
                       </div>
                       <button className={`${styles.buy__btn}`}>Submit</button>
                     </form>
@@ -143,6 +158,10 @@ const ProductDetails = () => {
                 </div>
               )}
             </Col>
+            <Col lg="12" className="mt-4">
+              <h2>You might also like</h2>
+            </Col>
+            <ProductList data={relatedProducts} layout={false} />
           </Row>
         </Container>
       </section>

@@ -1,0 +1,41 @@
+.billing__form .form__group input {
+  all: unset;
+  border: 1px solid var(--card-bg-02);
+  border-radius: 5px;
+  padding: 5px;
+  width: 100%;
+}
+.checkout__cart {
+  padding: 20px;
+  background: var(--primary-color);
+  color: #fff;
+  border-radius: 5px;
+}
+.checkout__cart h6,
+h4 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.checkout__cart h6 {
+  margin-bottom: 20px;
+}
+.checkout__cart h4 {
+  border-top: 1px solid #ccc;
+  padding-top: 20px;
+}
+.buy__btn {
+  border: none;
+  outline: none;
+  padding: 8px 20px;
+  margin-top: 1rem;
+  border-radius: 5px;
+  color: var(--primary-color);
+  background: #fff;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s;
+}
+.buy__btn a:hover {
+  color: inherit;
+}

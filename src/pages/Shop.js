@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from "react";
-import { Container, Row, } from "reactstrap";
+import { Container, Row } from "reactstrap";
 import Helmet from "../components/helmet/Helmet";
 import { CommonSection } from "../components/ui/common-section/CommonSection";
 import ProductList from "../components/ui/ProductList";
@@ -12,7 +12,7 @@ const Shop = () => {
   const [layout, setLayout] = useState(false);
   const [open, setOpen] = useState(true);
   const toggleFunc = useCallback(() => setOpen(!open), [open]);
-  const [filterpro, setFilter] = useState(allProdcts);
+  const [filter, setFilter] = useState(allProdcts);
   const [sort, setSort] = useState("");
   const [fallProducts, setFAllProducts] = useState(allProdcts);
   const [pageNumber, setPageNumber] = useState(0);
@@ -58,21 +58,21 @@ const Shop = () => {
   }, [category, allProdcts]);
 
   let pageCount = Math.ceil(
-    filterpro.length && rangeProduct.length / productPerPage
+    filter.length && rangeProduct.length / productPerPage
   );
   const changePage = ({ selected }) => {
     setPageNumber(selected);
   };
 
   const filterHandle = (e) => {
-    setCategory(e.target.dataset.filterpro);
+    setCategory(e.target.dataset.filter);
     setPageNumber(0);
   };
 
   useEffect(() => {
     if (sort === "defualt") {
       setFAllProducts(
-        (filterpro && rangeProduct).sort((a, b) => {
+        (filter && rangeProduct).sort((a, b) => {
           const nameA = a.id;
           const nameB = b.id;
           if (nameA < nameB) {
@@ -87,7 +87,7 @@ const Shop = () => {
     }
     if (sort === "name-a") {
       setFAllProducts(
-        (filterpro && rangeProduct).sort((a, b) => {
+        (filter && rangeProduct).sort((a, b) => {
           const nameA = a.productName.toUpperCase();
           const nameB = b.productName.toUpperCase();
           if (nameA < nameB) {
@@ -102,7 +102,7 @@ const Shop = () => {
     }
     if (sort === "name-z") {
       setFAllProducts(
-        (filterpro && rangeProduct).sort((a, b) => {
+        (filter && rangeProduct).sort((a, b) => {
           const nameA = a.productName.toUpperCase();
           const nameB = b.productName.toUpperCase();
           if (nameA > nameB) {
@@ -117,36 +117,37 @@ const Shop = () => {
     }
     if (sort === "price-highest") {
       setFAllProducts(
-        (filterpro && rangeProduct).sort((a, b) => b.price - a.price)
+        (filter && rangeProduct).sort((a, b) => b.price - a.price)
       );
     }
     if (sort === "price-lowest") {
       setFAllProducts(
-        (filterpro && rangeProduct).sort((a, b) => a.price - b.price)
+        (filter && rangeProduct).sort((a, b) => a.price - b.price)
       );
     }
-  }, [filterpro, sort, rangeProduct]);
+  }, [filter, sort, rangeProduct]);
 
   useEffect(() => {
-    const fiteredProducts = filterpro.filter((item) => item.price <= range);
+    const fiteredProducts = filter.filter((item) => item.price <= range);
     setRangeProduct(fiteredProducts);
-  }, [range, filterpro]);
+  }, [range, filter]);
 
   useEffect(() => {
-    const fiteredProducts = filterpro.filter((item) => {
+    const fiteredProducts = filter.filter((item) => {
       if (searchTerm === "") return item;
       if (item.productName.toLowerCase().includes(searchTerm.toLowerCase()))
         return item;
     });
     setRangeProduct(fiteredProducts);
-  }, [searchTerm, filterpro]);
+  }, [searchTerm, filter]);
 
   useEffect(() => {
     const displayPage =
-    filterpro.slice(visitedPage, visitedPage + productPerPage) &&
+      filter.slice(visitedPage, visitedPage + productPerPage) &&
       rangeProduct.slice(visitedPage, visitedPage + productPerPage);
     setFAllProducts(displayPage);
-  }, [visitedPage, filterpro, sort, rangeProduct]);
+  }, [visitedPage, filter, sort, rangeProduct]);
+  
   const clearFilterHandler = () => {
     setCategory("all");
     setFilter(allProdcts);

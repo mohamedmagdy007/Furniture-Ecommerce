@@ -1,0 +1,35 @@
+.auth__form {
+  background: var(--primary-color);
+  padding: 40px;
+  border-radius: 5px;
+}
+.form__group input {
+  all: unset;
+  border: 1px solid var(--card-bg-02);
+  border-radius: 5px;
+  background-color: #fff;
+  padding: 5px;
+  text-align: start;
+  width: 100%;
+}
+.form__group input[type="file"] {
+  color: #fff;
+  background-color: transparent;
+  border: none;
+}
+.auth__btn {
+  all: unset;
+  background: #fff;
+  color: var(--primary-color);
+  padding: 8px 20px;
+  border-radius: 5px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  transition: .3s;
+}
+.auth__btn:hover {
+    background: #ddd;
+}
+.auth__form p a {
+  color: #fff;
+}
