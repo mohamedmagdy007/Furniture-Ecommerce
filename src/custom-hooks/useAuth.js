@@ -5,6 +5,7 @@ const useAuth = () => {
   const [currentUser, setCurrentUser] = useState({});
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
+      console.log(user);
       if (user) {
         setCurrentUser(user);
       } else {
@@ -12,7 +13,7 @@ const useAuth = () => {
       }
     });
   });
-  return currentUser;
+  return { currentUser };
 };
 
 export default useAuth;

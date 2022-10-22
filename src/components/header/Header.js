@@ -23,15 +23,21 @@ const Header = () => {
   const profileActions = useRef(null);
   const navigate = useNavigate();
   const { currentUser } = useAuth();
+  console.log(
+    "🚀 ~ file: Header.js ~ line 26 ~ Header ~ currentUser",
+    currentUser
+  );
 
   const togglesprofileActions = () => {
+
     profileActions.current.classList.toggle(`${styles.show__profileActions}`);
   };
-  const logout = () => {
+  const logOut = (e) => {
+    e.stopPropagation();
     signOut(auth)
       .then(() => {
         toast.success("Logged out");
-        navigate("/home")
+        navigate("/home");
       })
       .catch((err) => {
         toast.error(err.message);
@@ -89,7 +95,9 @@ const Header = () => {
                   onClick={togglesprofileActions}
                 >
                   {currentUser ? (
-                    <span onclick={logout}>logout</span>
+                    <div onClick={logOut} style={{ cursor: "pointer" }}>
+                      logout
+                    </div>
                   ) : (
                     <div className="d-flex flex-column">
                       <Link to="/signup">SignUp</Link>
