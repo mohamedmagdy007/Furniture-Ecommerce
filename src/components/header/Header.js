@@ -4,12 +4,12 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import { Container, Row } from "reactstrap";
 import logo from "../../assets/images/eco-logo.png";
 import person from "../../assets/images/user-icon.png";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import useAuth from "../../custom-hooks/useAuth";
 import { signOut } from "firebase/auth";
 import { auth } from "../../firebase.config";
 import { toast } from "react-toastify";
-
+import { cartUiActions } from "../../redux/slices/cartUiShopping";
 const Nav__link = [
   { path: "/home", display: "Home" },
   { path: "/shop", display: "Shop" },
@@ -22,6 +22,10 @@ const Header = () => {
   const totalQuantity = useSelector((state) => state.cart.totalQuantity);
   const profileActions = useRef(null);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const toggleCart = () => {
+    dispatch(cartUiActions.toggle());
+  };
   const { currentUser } = useAuth();
 
   const togglesprofileActions = () => {
@@ -74,7 +78,7 @@ const Header = () => {
                 <i className="ri-heart-line"></i>
                 <span className={styles.badge}>1</span>
               </span>
-              <span className={styles.cart__icon}>
+              <span className={styles.cart__icon} onClick={toggleCart}>
                 <i className="ri-shopping-bag-line"></i>
                 <span className={styles.badge}>{totalQuantity}</span>
               </span>
