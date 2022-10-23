@@ -1,14 +1,18 @@
 .header {
   width: 100%;
-  position: sticky;
-  top: 0;
+
   left: 0;
   background: #fff;
   z-index: 1000;
   box-shadow: rgb(0 0 0 / 10%) 0px 4px 6px -1px,
     rgb(0 0 0 / 6%) 0px 2px 4px -1px;
-    backdrop-filter: saturate(180%) blur(5px);
-    background: hsla(0,0%,100%,.8);
+  -webkit-backdrop-filter: saturate(180%) blur(5px);
+  backdrop-filter: saturate(180%) blur(5px);
+  background: hsla(0, 0%, 100%, 0.8);
+}
+.sticky {
+  position: sticky;
+  top: 0;
 }
 .nav__wrapper {
   display: flex;
@@ -79,8 +83,9 @@
 .nav__icons .profile .profile__actions {
   position: absolute;
   top: 100%;
-  left: -2rem;
+  left: -95%;
   width: 150px;
+  transform: translate(-51%, 0%);
   z-index: 10;
   padding: 15px;
   border-radius: 5px;
@@ -113,7 +118,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     /* background: rgba(0, 0, 0, 0.53); */
     z-index: 9999;
     transform: translateX(100%);
@@ -129,14 +134,7 @@
     opacity: 1;
     transform: translateX(0);
   }
-  /* @keyframes identifier {
-    0% {
-      transform: translateX(25px);
-    }
-    100% {
-      transform: translateX(0px);
-    }
-  } */
+
   .menu {
     position: absolute;
     top: 0;

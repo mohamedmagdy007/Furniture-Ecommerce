@@ -52,7 +52,7 @@ const Cart = () => {
                 <button className={`${styles.buy__btn} w-100`}>
                   <Link to="/shop">Continue Shopping</Link>
                 </button>
-                <button className={`${styles.buy__btn} w-100`}>
+                <button className={`${styles.buy__btn} w-100 ${cartitems.length === 0 ? styles.btn_disable : null}`}  disabled={cartitems.length === 0 ? true : false}>
                   <Link to="/checkout">Checkout</Link>
                 </button>
               </div>

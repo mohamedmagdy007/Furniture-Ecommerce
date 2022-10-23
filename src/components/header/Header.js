@@ -23,13 +23,8 @@ const Header = () => {
   const profileActions = useRef(null);
   const navigate = useNavigate();
   const { currentUser } = useAuth();
-  console.log(
-    "🚀 ~ file: Header.js ~ line 26 ~ Header ~ currentUser",
-    currentUser
-  );
 
   const togglesprofileActions = () => {
-
     profileActions.current.classList.toggle(`${styles.show__profileActions}`);
   };
   const logOut = (e) => {
@@ -44,7 +39,7 @@ const Header = () => {
       });
   };
   return (
-    <header className={styles.header}>
+    <header className={`${styles.header} ${styles.sticky}`}>
       <Container>
         <Row>
           <div className={styles.nav__wrapper}>
@@ -56,8 +51,8 @@ const Header = () => {
             </div>
             <div
               className={styles.navigation}
-              ref={menuRef}
               onClick={toggleMenu}
+              ref={menuRef}
             >
               <ul className={styles.menu}>
                 {Nav__link.map((item, index) => (

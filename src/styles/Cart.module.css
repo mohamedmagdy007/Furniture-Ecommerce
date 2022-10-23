@@ -31,3 +31,11 @@ td {
 .buy__btn a:hover {
   color: inherit;
 }
+.buy__btn a {
+  display: inherit;
+  width: 100%;
+}
+.btn_disable {
+  pointer-events: none;
+  opacity: 0.6;
+}
