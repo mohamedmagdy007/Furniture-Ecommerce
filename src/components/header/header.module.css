@@ -1,6 +1,5 @@
 .header {
   width: 100%;
-
   left: 0;
   background: #fff;
   z-index: 1000;
@@ -119,10 +118,9 @@
     left: 0;
     width: 100%;
     height: 100vh;
-    /* background: rgba(0, 0, 0, 0.53); */
-    z-index: 9999;
-    transform: translateX(100%);
-    transition: all 0.5s;
+    background: rgba(0, 0, 0, 0.434);
+    z-index: 99;
+    display: none;
   }
   .nav__item {
     transform: translateX(100%);
@@ -141,15 +139,16 @@
     right: 0;
     width: 250px;
     height: 100%;
-    padding: 0;
     background: #fff;
-    z-index: 99999;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+    z-index: 100;
     row-gap: 3rem;
+    line-height: 20px;
   }
   .show__menu {
-    transform: translateX(0);
+    display: flex;
   }
   .mobile__menu {
     display: block;

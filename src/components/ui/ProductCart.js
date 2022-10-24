@@ -66,9 +66,9 @@ const ProductCart = ({ item, layout }) => {
                 className={`${styles["Product__Cart-bottom"]} d-flex align-items-center justify-content-between`}
               >
                 <span className={styles.price}>${price}</span>
-                <button onClick={AddToCartHandler}>
+                <span onClick={AddToCartHandler}>
                   <i className="ri-add-line"></i>
-                </button>
+                </span>
               </div>
             </div>
           </div>
