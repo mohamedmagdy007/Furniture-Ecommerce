@@ -8,6 +8,7 @@ import ProductDetails from "../pages/ProductDetails";
 import Login from "../pages/Login";
 import Signup from "../pages/Signup";
 import ProtectedRoute from "./ProtectedRoute";
+import Notfound from "../pages/Notfound";
 
 const Routers = () => {
   return (
@@ -27,7 +28,7 @@ const Routers = () => {
           </ProtectedRoute>
         }
       />
-      <Route path="*" element={<h1 className="text-center">404 Error</h1>} />
+      <Route path="*" element={<Notfound />} />
     </Routes>
   );
 };

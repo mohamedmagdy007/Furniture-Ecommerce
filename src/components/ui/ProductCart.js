@@ -9,7 +9,6 @@ const ProductCart = ({ item, layout }) => {
   const { id, productName, imgUrl, category, price, shortDesc } = item;
   const dispatch = useDispatch();
   const AddToCartHandler = () => {
-    console.log("bjkbjbj");
     dispatch(
       cartActions.addItems({
         id: id,

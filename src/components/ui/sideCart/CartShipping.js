@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 import { ListGroup } from "reactstrap";
 import CartItems from "./CartItems";
 import styles from "./cartItems.module.css";
+import { Player } from "@lottiefiles/react-lottie-player";
 import { cartUiActions } from "../../../redux/slices/cartUiShopping";
 const CartShipping = () => {
   const cartitems = useSelector((state) => state.cart.cartItems);
-  console.log(cartitems);
   const dispatch = useDispatch();
   const toggle = () => {
     dispatch(cartUiActions.toggle());
@@ -22,7 +22,15 @@ const CartShipping = () => {
         </div>
         <div className={styles["cart__item-list"]}>
           {cartitems.length === 0 ? (
-            <h6 className="text-center mt-5">No item added ti the cart</h6>
+            <>
+              <Player
+                src="https://assets7.lottiefiles.com/packages/lf20_15TIGR.json"
+                autoplay
+                loop
+                className="player"
+              />
+              <h6 className="text-center mt-5">No item added ti the cart</h6>
+            </>
           ) : (
             cartitems.map((item) => <CartItems item={item} key={item.id} />)
           )}

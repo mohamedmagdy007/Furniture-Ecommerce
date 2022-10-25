@@ -7,7 +7,6 @@ import CartShipping from "../ui/sideCart/CartShipping";
 
 const Layout = () => {
   const showCart = useSelector((state) => state.cartUi.cartIsVisible);
-  console.log(showCart);
   return (
     <>
       <Header />
